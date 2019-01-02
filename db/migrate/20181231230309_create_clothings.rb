@@ -8,7 +8,6 @@ class CreateClothings < ActiveRecord::Migration[5.2]
       t.integer :rating
       t.string :date_bought
       t.string :clothing_type
-
       t.timestamps
     end
   end
