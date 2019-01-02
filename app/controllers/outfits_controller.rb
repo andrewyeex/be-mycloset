@@ -2,19 +2,20 @@ class OutfitsController < ApplicationController
   def show
   end
   def index
-    data = Outfit.all
-    msg = 'Loaded All Outfits'
-    render json: successJSON(msg, data), status: :ok
+    outfit   = Outfit.all
+    msg      = 'Loaded All Outfits'
+    status   = 'success'
+    render json: responseJSON(status, msg, outfit), status: :ok
   end
   def create
   end
   def update
   end
   # utils
-  def successJSON message, data
+  def responseJSON status, msg, data
     return {
-      status: 'SUCCESS',
-      message: message,
+      status: status,
+      message: msg,
       data: data
     }
   end
