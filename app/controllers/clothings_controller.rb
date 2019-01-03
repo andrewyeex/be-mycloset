@@ -3,7 +3,7 @@ class ClothingsController < ApplicationController
   end
   def index
     clothing = Clothing.all
-    msg     = 'loaded All Clothes Data'
+    msg     = 'loaded All clothing Data'
     status  = 'success'
     render json: responseJSON(status, msg, clothing), status: :ok
   end
@@ -16,7 +16,7 @@ class ClothingsController < ApplicationController
       clothing_type: data['type'],
       date_bought:   data['date_bought']
     })
-    if clothes.save
+    if clothing.save
     	status = 'success'
       msg    = 'created New Clothing'
       render json: responseJSON(status, msg, clothing), status: :ok
@@ -27,10 +27,10 @@ class ClothingsController < ApplicationController
     end
   end
   def type
-    type    = params['type']
-    msg     = "loaded #{type}"
-    status  = 'success'
-    clothes = Clothing.where(clothing_type: type)
+    type     = params['type']
+    msg      = "loaded #{type}"
+    status   = 'success'
+    clothing = Clothing.where(clothing_type: type)
     render json: responseJSON(status, msg, clothing), status: :ok
   end
   def update
