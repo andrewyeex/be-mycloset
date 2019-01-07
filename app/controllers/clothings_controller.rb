@@ -8,13 +8,14 @@ class ClothingsController < ApplicationController
     render json: responseJSON(status, msg, clothing), status: :ok
   end
   def create
-    data     = JSON.parse(request.raw_post)
     clothing = Clothing.new({
-      name:          data['name'],
-      image:         data['image'],
-      note:          data['note'],
-      clothing_type: data['type'],
-      date_bought:   data['date_bought']
+      name:          params['name'],
+      color:         params['color'],
+      brand:         params['brand'],
+      image:         params['image'],
+      note:          params['note'],
+      clothing_type: params['clothing_type'],
+      date_bought:   params['date_bought']
     })
     if clothing.save
     	status = 'success'
@@ -34,13 +35,15 @@ class ClothingsController < ApplicationController
     render json: responseJSON(status, msg, clothing), status: :ok
   end
   def update
-  	data = JSON.parse(request.raw_post)
-    clothing             = Clothing.find(id: data['id'])
-    clothing.name        = data['name']
-    clothing.note        = data['note']
-    clothing.brand       = data['brand']
-    clothing.rating      = data['rating']
-    clothing.is_favorite = data['is_favorite']
+    clothing             = Clothing.find(params['id'])
+    clothing.name        = params['name']
+    clothing.color       = params['color']
+    clothing.image       = params['image']
+    clothing.note        = params['note']
+    clothing.brand       = params['brand']
+    clothing.clothing_type = params['clothing_type']
+    clothing.rating      = params['rating']
+    clothing.is_favorite = params['is_favorite']
     if clothing.save
     	status = 'success'
     	msg    = 'succesfully updated clothing'
