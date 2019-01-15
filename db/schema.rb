@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_173805) do
     t.integer "pants_id"
     t.string "tops"
     t.integer "headwear_id"
-    t.boolean "is_favorite"
+    t.boolean "is_favorite", default: false
     t.integer "times_worn", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
